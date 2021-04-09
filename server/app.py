@@ -5,6 +5,7 @@ import numpy as np
 
 app = Flask(__name__)
 
+#list of locations
 __location=None
 
 @app.route('/getLocation')
@@ -15,7 +16,7 @@ def getLocation():
 
     global __location
     __location = location["data_columns"][3:]
-    return json.dumps(location)
+    return json.dumps(__location)
 
 
 @app.route('/predict', methods=['POST'])
@@ -38,6 +39,7 @@ def predict():
     except:
         locIndex=-1
 
+    # add 3 becoz locIndex doesn't take bhk, sqft, bath into account while finding index
     x[locIndex+3]=1 
 
     return str(round(model.predict([x])[0],2))

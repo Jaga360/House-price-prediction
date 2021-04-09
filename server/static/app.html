@@ -11,20 +11,21 @@
     <script src="static/app.js"></script>
 </head>
 
-<body>
+<body onload="getLocation()">
+
   <form action="/predict" method="post">
+
     <label for="sqft">sqft:</label>
     <input type="text" id="sqft" name="sqft" placeholder="sqft">
+
     <label for="bhk">bhk:</label>
     <input type="text" id="bhk" name="bhk" placeholder="bhk">
+    
     <label for="bath">bath:</label>
     <input type="text" id="bath" name="bath" placeholder="bath">
     
     <label for="location">location:</label>
-    <select name="location" id="location">
-      <option value="1st Block Jayanagar">1st Block Jayanagar</option>
-      <option value="Yelenahalli">Yelenahalli</option>
-    </select>
+    <select name="location" id="location"></select>
 
     <button type="submit">submit</button> 
 </body>
