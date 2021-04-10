@@ -19,20 +19,20 @@ def getLocation():
     return json.dumps(__location)
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict')
 def predict():
+    
     global __location
-    getLocation()
 
     with open('artifacts/house_price_prediction.pickle' , 'rb') as f:
         model= pickle.load(f)
 
     # to get user values from the html form, use same name as in input tag 
     x=np.zeros(len(__location) + 3)
-    x[0]=request.form['bhk']
-    x[1]=request.form['sqft']
-    x[2]=request.form['bath']
-    loc=request.form['location']
+    x[0]=request.args.get('bhk')
+    x[1]=request.args.get('sqft')
+    x[2]=request.args.get('bath')
+    loc=request.args.get('loc')
 
     try:
         locIndex = __location.index(loc)
@@ -41,8 +41,8 @@ def predict():
 
     # add 3 becoz locIndex doesn't take bhk, sqft, bath into account while finding index
     x[locIndex+3]=1 
-
-    return str(round(model.predict([x])[0],2))
+    
+    return  str(round(model.predict([x])[0],2))
 
 
 

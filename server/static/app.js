@@ -1,8 +1,5 @@
 
-
-
 function getLocation(){
-
    fetch('/getLocation')
     .then(res => res.json())
     .then(data=> {
@@ -11,4 +8,24 @@ function getLocation(){
             dropdown.innerHTML += "<option>"+ loc + "</option>"
         }
     }) 
+}
+
+
+function predict(){
+    
+    sqft= document.getElementById("sqft").value
+    bhk= document.getElementById("bhk").value
+    bath= document.getElementById("bath").value
+    loc=document.getElementById('location').value
+
+    details = `?sqft=${sqft}&bhk=${bhk}&bath=${bath}&loc=${loc}`
+
+    url="/predict"+details
+
+    fetch(url)
+    .then(r => r.json())
+    .then(predictedPrice => {
+       div=document.getElementById('ans')
+       div.innerHTML = "<h2>"+ predictedPrice + "</h2>"
+    })
 }
