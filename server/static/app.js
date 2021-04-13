@@ -25,7 +25,7 @@ function predict(){
     fetch(url)
     .then(r => r.json())
     .then(predictedPrice => {
-       div=document.getElementById('ans')
-       div.innerHTML = "<h2>"+ predictedPrice + "</h2>"
+       div=document.getElementById('price')
+       div.innerHTML=predictedPrice
     })
 }
