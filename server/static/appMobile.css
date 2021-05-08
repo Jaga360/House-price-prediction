@@ -1,0 +1,41 @@
+body{
+    height: 100vh;
+    background-color: #141D26;
+}
+
+.set-box{
+    position:relative;
+    top:10%;
+    left: 5%;
+    width:90%;
+}
+
+.btn{
+    position:relative;
+    top:10%;
+    left:12.5%;
+    width:75%;
+    margin-bottom: 10px;
+}
+
+.input-group-prepend{
+    width:40%;
+}
+
+#bhk, #sqft, #bath , #location, #price{
+    margin: 10px;
+    margin-left: 0px;
+    border-radius: 0px;
+}
+
+.input-group-text{
+    margin: 10px;
+    margin-right: 0px;
+    border-radius: 0px;
+}
+
+.price-text{
+    font-size:70%;
+}
+
+
